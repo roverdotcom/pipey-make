@@ -27,4 +27,7 @@ docker-ru%: docker
 docker-pus%: docker
 	docker push $(PKG_NAME)
 
+update-tools:
+	@curl -sL https://raw.githubusercontent.com/roverdotcom/pipey-make/master/pipey.Makefile > pipey.Makefile
+
 .DEFAULT_GOAL := docker-test
