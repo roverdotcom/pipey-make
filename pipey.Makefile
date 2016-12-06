@@ -1,7 +1,7 @@
 cur-dir := $(shell pwd)
 
-ENVIRONMENT_FLAGS := "--env-file ~/.pipey.config --env-file local.config"
-DOCKER_BUILD_OPTS := "$(ENVIRONMENT_FLAGS) $(DOCKER_BUILD_OPTS)"
+ENVIRONMENT_FLAGS := --env-file ~/.pipey.config --env-file local.config
+DOCKER_RUN_OPTS := $(ENVIRONMENT_FLAGS) $(DOCKER_RUN_OPTS)
 
 # lists all available targets
 lis%:
@@ -16,13 +16,13 @@ docke%:
 
 # Build the docker container, install the package, and open a shell inside it for testing
 docker-shel%: docker
-	docker run --rm --env-file local.config -it $(DOCKER_RUN_OPTS) $(PKG_NAME) /bin/sh
+	docker run --rm -it $(DOCKER_RUN_OPTS) $(PKG_NAME) /bin/sh
 
 docker-tes%: docker
 	docker run --rm $(DOCKER_RUN_OPTS) $(PKG_NAME) nosetests
 
 docker-ru%: docker
-	docker run --rm --env-file local.config -it $(DOCKER_RUN_OPTS) $(PKG_NAME)
+	docker run --rm -it $(DOCKER_RUN_OPTS) $(PKG_NAME)
 
 docker-pus%: docker
 	docker push $(PKG_NAME)
