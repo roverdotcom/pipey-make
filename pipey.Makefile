@@ -13,12 +13,11 @@ lis%:
 # required for list
 no_targets__:
 
-docke%:
+docker-buil%:
 	touch ~/.pipey.config
 	touch local.config
 	docker build $(DOCKER_BUILD_OPTS) -t $(PKG_NAME) .
 	@$(DONE)
-
 
 docker-shel%: docker
 	docker run --rm -it $(DOCKER_RUN_OPTS) $(PKG_NAME) /bin/sh
