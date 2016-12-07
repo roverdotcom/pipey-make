@@ -15,3 +15,11 @@ into the repo root. An example from `pipey-example`:
 include pipey.Makefile
 PKG_NAME = roverdotcom/rover-data-pipeline-example:latest
 ```
+
+# Updating
+
+To upate pipey.Makefile:
+
+1. update the pipey.Makefile in `pipey-make.git` repo on Github. 
+2. You must tag it with a new version number
+3. To update your pipey job, run `make update-tools` in your pipey repo.
