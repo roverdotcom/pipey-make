@@ -23,3 +23,10 @@ To upate pipey.Makefile:
 1. update the pipey.Makefile in `pipey-make.git` repo on Github. 
 2. You must tag it with a new version number
 3. To update your pipey job, run `make update-tools` in your pipey repo.
+
+# References
+
+Based on and inspired by:
+
+* https://mattandre.ws/2016/05/makefile-inheritance/
+* https://github.com/Financial-Times/n-makefile
