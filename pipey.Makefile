@@ -19,19 +19,19 @@ docker-buil%:
 	docker build $(DOCKER_BUILD_OPTS) -t $(PKG_NAME) .
 	@$(DONE)
 
-docker-shel%: docker
+docker-shel%: docker-build
 	docker run --rm -it $(DOCKER_RUN_OPTS) $(PKG_NAME) /bin/sh
 	@$(DONE)
 
-docker-tes%: docker
+docker-tes%: docker-build
 	docker run --rm $(DOCKER_RUN_OPTS) $(PKG_NAME) nosetests
 	@$(DONE)
 
-docker-ru%: docker
+docker-ru%: docker-build
 	docker run --rm -it $(DOCKER_RUN_OPTS) $(PKG_NAME)
 	@$(DONE)
 
-docker-pus%: docker
+docker-pus%: docker-build
 	docker push $(PKG_NAME)
 	@$(DONE)
 
