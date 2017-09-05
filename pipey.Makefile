@@ -2,6 +2,8 @@ cur-dir := $(shell pwd)
 
 ENVIRONMENT_FLAGS := --env-file ~/.pipey.config --env-file local.config
 DOCKER_RUN_OPTS := $(ENVIRONMENT_FLAGS) $(DOCKER_RUN_OPTS)
+# Docker options when running the test suite
+TEST_DOCKER_RUN_OPTS := -e DATADOG_KILL_DELAY=0
 
 DONE = echo ✓ $@ done
 JSON_GET_VALUE = grep $1 | head -n 1 | sed 's/[," ]//g' | cut -d : -f 2
@@ -24,7 +26,7 @@ docker-shel%: docker-build
 	@$(DONE)
 
 docker-tes%: docker-build
-	docker run --rm $(DOCKER_RUN_OPTS) $(PKG_NAME) nosetests
+	docker run --rm $(TEST_DOCKER_RUN_OPTS) $(PKG_NAME) nosetests
 	@$(DONE)
 
 docker-ru%: docker-build
