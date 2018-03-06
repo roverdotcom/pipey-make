@@ -16,7 +16,7 @@ no_targets__:
 docker-buil%:
 	touch ~/.pipey.config
 	touch local.config
-	docker build --pull $(DOCKER_BUILD_OPTS) -t $(PKG_NAME) .
+	docker build $(DOCKER_BUILD_OPTS) -t $(PKG_NAME) .
 	@$(DONE)
 
 docker-shel%: docker-build
