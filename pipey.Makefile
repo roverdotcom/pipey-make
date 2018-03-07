@@ -27,6 +27,10 @@ docker-tes%: docker-build
 	docker run --rm $(DOCKER_RUN_OPTS) $(PKG_NAME) nosetests
 	@$(DONE)
 
+docker-harnes%: docker-build
+	docker run --rm -it $(DOCKER_RUN_OPTS) --entrypoint=/bin/sh $(PKG_NAME) go_test.sh
+	@$(DONE)
+
 docker-ru%: docker-build
 	docker run --rm -it $(DOCKER_RUN_OPTS) $(PKG_NAME)
 	@$(DONE)
