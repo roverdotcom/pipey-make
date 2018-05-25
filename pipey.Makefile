@@ -20,19 +20,19 @@ docker-buil%:
 	@$(DONE)
 
 docker-shel%: docker-build
-	docker run --rm -it $(DOCKER_RUN_OPTS) $(PKG_NAME) /bin/sh
+	docker run -v ~/.aws/credentials:/root/.aws/credentials --rm -it $(DOCKER_RUN_OPTS) $(PKG_NAME) /bin/bash
 	@$(DONE)
 
 docker-tes%: docker-build
-	docker run --rm $(DOCKER_RUN_OPTS) $(PKG_NAME) nosetests
+	docker run -v ~/.aws/credentials:/root/.aws/credentials --rm $(DOCKER_RUN_OPTS) $(PKG_NAME) nosetests
 	@$(DONE)
 
 docker-harnes%: docker-build
-	docker run --rm -it $(DOCKER_RUN_OPTS) --entrypoint=/bin/sh $(PKG_NAME) go_test.sh
+	docker run -v ~/.aws/credentials:/root/.aws/credentials --rm -it $(DOCKER_RUN_OPTS) --entrypoint=/bin/sh $(PKG_NAME) go_test.sh
 	@$(DONE)
 
 docker-ru%: docker-build
-	docker run --rm -it $(DOCKER_RUN_OPTS) $(PKG_NAME)
+	docker run -v ~/.aws/credentials:/root/.aws/credentials --rm -it $(DOCKER_RUN_OPTS) $(PKG_NAME)
 	@$(DONE)
 
 docker-pus%: docker-build
