@@ -28,7 +28,7 @@ docker-tes%: docker-build
 	@$(DONE)
 
 docker-harnes%: docker-build
-	docker run -v ~/.aws/credentials:/root/.aws/credentials --rm -it $(DOCKER_RUN_OPTS) --entrypoint=/bin/sh $(PKG_NAME) go_test.sh
+	docker run -v ~/.aws/credentials:/root/.aws/credentials --rm $(DOCKER_RUN_OPTS) --entrypoint=/bin/sh $(PKG_NAME) go_test.sh
 	@$(DONE)
 
 docker-ru%: docker-build
