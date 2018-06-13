@@ -32,7 +32,7 @@ docker-harnes%: docker-build
 	@$(DONE)
 
 docker-ru%: docker-build
-	docker run -v ~/.aws/credentials:/root/.aws/credentials --rm -it $(DOCKER_RUN_OPTS) $(PKG_NAME)
+	docker run -v ~/.aws/credentials:/root/.aws/credentials --rm $(DOCKER_RUN_OPTS) $(PKG_NAME)
 	@$(DONE)
 
 docker-pus%: docker-build
