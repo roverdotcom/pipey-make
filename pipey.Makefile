@@ -1,6 +1,7 @@
 cur-dir := $(shell pwd)
 
 ENVIRONMENT_FLAGS := --env-file ~/.pipey.config --env-file local.config
+ENVIRONMENT_FLAGS := $(ENVIRONMENT_FLAGS) -e ENVIRONMENT=${ENVIRONMENT} -e AWS_REGION=${AWS_REGION}
 DOCKER_RUN_OPTS := $(ENVIRONMENT_FLAGS) $(DOCKER_RUN_OPTS)
 
 DONE = echo ✓ $@ done
@@ -33,10 +34,6 @@ docker-harnes%: docker-build
 
 docker-ru%: docker-build
 	docker run -v ~/.aws/credentials:/root/.aws/credentials --rm $(DOCKER_RUN_OPTS) $(PKG_NAME)
-	@$(DONE)
-
-docker-pus%: docker-build
-	docker push $(PKG_NAME)
 	@$(DONE)
 
 # https://raw.githubusercontent.com/roverdotcom/pipey-make/master/pipey.Makefile
